@@ -1,0 +1,16 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.1.0
+
+Metrics/AbcSize:
+  Max: 50
+
+Metrics/MethodLength:
+  Max: 32
+
+Metrics/ParameterLists:
+  Max: 6
+
+# Using the usual snake_case for the filename below prevents the gem from loading.
+Naming/FileName:
+  Exclude: [lib/ons-json-logger.rb]
