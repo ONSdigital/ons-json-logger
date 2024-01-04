@@ -6,6 +6,25 @@ A utility class for generating structured JSON log entries with optional additio
 gem install ons-json-logger
 ```
 
+## Examples
+
+```ruby
+require 'logger'
+require 'ons-json-logger'
+require 'sinatra'
+
+LOGGER      = Logger.new($stdout)
+JSON_LOGGER = JSONLogger.new(application: 'amazing-webapp', environment: 'production')
+
+get '/signout' do
+  LOGGER.info(JSON_LOGGER.log(level: 'INFO',
+                              message: 'User signed out',
+                              module_name: 'app',
+                              user: { id: @user_login_id, ip_address: @client_ip },
+                              http: { method: 'GET', path: '/signout', status: 200, user_agent: request.user_agent }))
+end
+```
+
 ## Testing
 ```
 rake test
